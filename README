@@ -4,26 +4,30 @@ Presupposto due o più server nginx con la possibilità di catturare i parametri
 
 Gli nginx vengono configurati nel modo seguente:
 
-     location /rtt {
+location /rtt {
                 rewrite ^/rtt/(.*)$ http://mirror.garr.it/rtt/index.php/measure/singleMeasure.php?site=mi&rtt=$tcpinfo_rtt;
-        }
+}
         
 L'importante è che vi sia corrispondenza tra quanto in configurazione php e in configurazione nginx.
 
 I siti vengono configurati con un nome di zona ed un probeurl
 
-	'sites' => array (
-			'mi' => array(
-						'probeurl' => 'http://rttmi.mirror.garr.it/rtt/',
-						),
-			'rm' => array (
-						'probeurl' => 'http://rttrm.mirror.garr.it/rtt/'),
-				),
+    'sites' => array (
+    'mi' => array(
+	'probeurl' => 'http://rttmi.mirror.garr.it/rtt/',
+	 ),
+     'rm' => array (
+	'probeurl' => 'http://rttrm.mirror.garr.it/rtt/'),
+     ),
 				
 
 La misura avviene caricando in un iframe invisibile la pagina
 
 http://mirror.garr.it/rtt/index.php/measure/doMeasure.php
+
+Codice di esempio:
+
+<iframe src="http://mirror.garr.it/rtt/index.php/measure/doMeasure.php?" style="display:none"></iframe>
 
 Questa a sua volta apre tanti iframe invisibili tanti siti quanti sono i punti di misurazione.
 
