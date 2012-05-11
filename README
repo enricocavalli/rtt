@@ -28,6 +28,16 @@ http://mirror.garr.it/rtt/index.php/measure/doMeasure.php
 Questa a sua volta apre tanti iframe invisibili tanti siti quanti sono i punti di misurazione.
 
 
+Installazione:
+
+ git clone git://github.com/enricocavalli/rtt.git
+ 
+ Supponendo rtt installato sotto /var/rtt configurare il web server (esempio per apache) nel modo seguente:
+ 
+
+ Alias /rtt/ "/var/rtt/www/"
+ 
+ 
 Credits
 
 Molte cose sono copiate da simplesamlphp: utility, struttura a moduli, etc.
