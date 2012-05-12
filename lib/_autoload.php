@@ -13,16 +13,7 @@ function RTT_autoload($className) {
 
 	$libDir = dirname(__FILE__) . '/';
 
-	/* Handlig of modules. */
-	if(substr($className, 0, 7) === 'RTTmod_') {
-		$modNameEnd = strpos($className, '_', 7);
-		$module = substr($className, 7, $modNameEnd - 7);
-		$moduleClass = substr($className, $modNameEnd + 1);
-		
-		$file = RTT_Module::getModuleDir($module) . '/lib/' . str_replace('_', '/', $moduleClass) . '.php';
-	} else {
-		$file = $libDir . str_replace('_', '/', $className) . '.php';
-	}
+	$file = $libDir . str_replace('_', '/', $className) . '.php';
 	
 	if(file_exists($file)) {
 		require_once($file);
