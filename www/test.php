@@ -1,6 +1,7 @@
 <?php
+require_once('_include.php');
 
-$m = new RTTmod_measure_StoreMeasure();
+$m = new RTT_StoreMeasure();
 
-$m->getMeasure();
-
+print '<pre>';
+print_r($m->getMeasure());
