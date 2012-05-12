@@ -66,4 +66,35 @@ class RTT_Measure {
 
 	}
 	
+	/**
+	 * Get measures site from cookies
+	 * If no measure is present returns random site
+	 * 
+	 * @return string site 
+	 */
+	
+	function getSite() {
+		$store = new RTT_StoreMeasure();
+		
+		$measures=$store->getMeasure();
+		
+		if (count($measures)>0) {
+			$min_value=min($measures);
+		
+			foreach($measures as $site_id => $value) {
+				if($value == $min_value)  $min_key=$site_id;
+			}
+		}
+		
+		if(!isset($min_key)) {
+			
+			$sites = self::getSiteNames();
+			$index = array_rand($sites);
+			$min_key=$sites[$index];
+		}
+		
+		return $min_key;
+		
+	}
+	
 }
