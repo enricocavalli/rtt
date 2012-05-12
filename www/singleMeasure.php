@@ -1,11 +1,12 @@
 <?php
+require_once('_include.php');
 
 	if (!array_key_exists('site', $_REQUEST)) {
 		throw  new Exception('Site obbligatorio');
 	}
 	
 	$site=$_REQUEST['site'];
-	$m= new RTTmod_measure_Measure();
+	$m= new RTT_Measure();
 	
 	if (array_key_exists('rtt', $_REQUEST)) {
 

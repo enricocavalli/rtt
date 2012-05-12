@@ -1,6 +1,7 @@
 <?php
+require_once('_include.php');
 
-$m = new RTTmod_measure_Measure();
+$m = new RTT_Measure();
 $config = RTT_Configuration::getInstance();
 foreach( $m->getSiteNames() as $site ) {
     

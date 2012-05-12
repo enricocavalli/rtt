@@ -1,5 +1,5 @@
 <?php
-class RTTmod_measure_StoreMeasure {
+class RTT_StoreMeasure {
 	
 	private $cookie_name;
 	private $measure=array();

@@ -1,5 +1,5 @@
 <?php
-class RTTmod_measure_Measure {
+class RTT_Measure {
 	
 	private $probe_sites;	
 	
@@ -59,7 +59,7 @@ class RTTmod_measure_Measure {
 	 */
 	function recordMeasure($site,$rtt) {
 		
-		$store= new RTTmod_measure_StoreMeasure();
+		$store= new RTT_StoreMeasure();
 		$store->addMeasure($site, $rtt);
 		$store->storeMeasure();
 		
