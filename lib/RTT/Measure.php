@@ -14,7 +14,7 @@ class RTT_Measure {
 	 * @param string $site
 	 */
 	
-	private function getProbeURL($site) {
+	 function getProbeURL($site) {
 		
 		$ret=NULL;
 		
@@ -50,7 +50,7 @@ class RTT_Measure {
 
 	}
 	
-	
+
 	/**
 	 * Records probe data in cookie
 	 * 
