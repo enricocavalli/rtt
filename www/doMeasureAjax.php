@@ -18,8 +18,9 @@ $("#b1").click(function() {
 $.ajax({
 	type: "GET",
 	url: "getMeasure.php",
-	success: function(response){
-		$("#output").html(response).css(\'color\',\'#ff0000\').css(\'opacity\',\'0\').animate({ opacity: 1 },1000);		
+	dataType: "json",
+	success: function(response) {
+	$.each(response,function(index,value) { $("#output").append(" "+index+":"+value).css(\'opacity\',\'0\').animate({ opacity: 1 },1000); }	);
 	}
 });
 });
