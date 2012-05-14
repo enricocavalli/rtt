@@ -1,7 +1,16 @@
 <?php
 require_once('_include.php');
 echo '<html>
-<script type="text/javascript" src="js/jquery.js"></script>';
+<head>
+  <style type="text/css">
+   .hidden { display:none }
+  </style>
+</head>
+<body>
+<script type="text/javascript" src="js/jquery.js"></script>
+';
+
+
 $m = new RTT_Measure();
 $config = RTT_Configuration::getInstance();
 foreach( $m->getSiteNames() as $site ) {
@@ -12,20 +21,24 @@ foreach( $m->getSiteNames() as $site ) {
 }
 
 echo '
-<p><button id="b1">Run</button></p>
 <script type="text/javascript">
-$("#b1").click(function() {
 $.ajax({
 	type: "GET",
 	url: "getMeasure.php",
 	dataType: "json",
 	success: function(response) {
-	$.each(response,function(index,value) { $("#output").append(" "+index+":"+value).css(\'opacity\',\'0\').animate({ opacity: 1 },1000); }	);
+	validateMeasure(response);
 	}
 });
-});
 
+function validateMeasure(data) {
+
+if (data != \'\') {
+$.each(data,function(index,value) { $("#output").append(index+" : "+value+"<br/>").show("slow"); }	);
+}
+}
 </script>
-<div id="output" style="opacity: 0"></div>
+<div id="output" class="hidden"></div>
+</body>
 </html>
 ';
