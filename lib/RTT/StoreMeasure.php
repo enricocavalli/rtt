@@ -14,16 +14,13 @@ class RTT_StoreMeasure {
 		
 		$ret=array();
 		if (array_key_exists($this->cookie_name,$_COOKIE)) {
-			foreach ($_COOKIE[$this->cookie_name] as $name => $value) {
-				$ret[$name]=$value;
-			}
-			
+			$ret=json_decode($_COOKIE[$this->cookie_name],TRUE);		
 		} 
 		return $ret;
 		
 	}
 	function getMeasure() {
-		return $this->measure;
+		return json_encode($this->measure);
 	}
 	
 	function addMeasure($site,$rtt) {
@@ -34,10 +31,8 @@ class RTT_StoreMeasure {
 	
 	function storeMeasure() {
 		$cookie_params = RTT_Utilities::getCookieParams();
-		foreach ($this->measure as $key => $val) {
-			setcookie($this->cookie_name."[$key]","$val",time() + $cookie_params['lifetime'],
+			setcookie($this->cookie_name,json_encode($this->measure),time() + $cookie_params['lifetime'],
 					$cookie_params['path'],$cookie_params['domain'],$cookie_params['secure'],$cookie_params['httponly']);
-		}
 	}
 	
 }
