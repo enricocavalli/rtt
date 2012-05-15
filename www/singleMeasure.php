@@ -12,7 +12,12 @@ require_once('_include.php');
 
 		$rtt = $_REQUEST['rtt'];
 		$m->recordMeasure($site, $rtt);
-	 
+		echo '<script>
+		if(window.parent.js==true) {
+			window.parent.measureCompleted("'. $site .'","'. $rtt .'");
+		}
+		</script> 
+		';
 	} else {
 	
 		$m->probeSingleSite($site);
