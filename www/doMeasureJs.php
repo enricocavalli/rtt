@@ -1,6 +1,8 @@
 <?php
 require_once('_include.php');
-echo '<html>
+echo '
+<!DOCTYPE html>
+<html>
 <head>
   <style type="text/css">
    .hidden { display:none }
@@ -19,8 +21,7 @@ foreach( $m->getSiteNames() as $site ) {
 	$siteTimeouts[$site]=$m->getSiteTimeout($site);
 	$siteStatus[$site]='inprogress';
 	$url = RTT_Utilities::getBaseURL() . 'singleMeasure.php?site=' . $site;
-	echo '<iframe src="' . $url . '" style="display:none"></iframe>';
-	
+	echo '<iframe src="' . $url . '" style="display:none"></iframe>';	
 	echo '<div id="rtt-'.$site.'">'.$site.' <img id="statusimage-'.$site.'" src="icons/progress.gif"></div>';	
 	
 }
