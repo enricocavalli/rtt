@@ -25,6 +25,17 @@ class RTT_Measure {
 		return $ret;
 	}
 	
+	function getSiteTimeout($site, $default_timeout=3) {
+		
+		$ret=$default_timeout;
+		if (isset($this->probe_sites[$site]['timeout'])) {
+			$ret=$this->probe_sites[$site]['timeout'];
+		}
+		
+		return $ret;
+		
+	}
+	
 	/**
 	 * returns an array with siteNames
 	 * 

@@ -10,8 +10,14 @@ $config = array(
 		'sites' => array (
 			'mi' => array(
 						'probeurl' => 'http://rttmi.mirror.garr.it/rtt/',
+						'timeout' => 3,
 						),
 			'rm' => array (
-						'probeurl' => 'http://rttrm.mirror.garr.it/rtt/'),
+						'probeurl' => 'http://rttrm.mirror.garr.it/rtt/',
+						'timeout' => 5,
+					),
 				),
+		
+
+		
 	);
