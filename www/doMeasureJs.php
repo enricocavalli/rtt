@@ -16,6 +16,7 @@ echo '
       .measure-iframes-img {
     	float: left;
     	padding-right: 10px;
+    	vertical-align: top;
     }
   </style>
 </head>
@@ -27,6 +28,7 @@ echo '
 $m = new RTT_Measure();
 $config = RTT_Configuration::getInstance();
 	echo '<div class="measure-iframes-container" id="measure-iframes">';
+	echo '<div class="measure-iframes-img testo">Connection Information: IP <b>'.$_SERVER[REMOTE_ADDR].'</b></div>';
 foreach( $m->getSiteNames() as $site ) {
 	
 	$siteTimeouts[$site]=$m->getSiteTimeout($site);
