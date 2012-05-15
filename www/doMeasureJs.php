@@ -6,6 +6,17 @@ echo '
 <head>
   <style type="text/css">
    .hidden { display:none }
+   .testo {  
+   			font-family:monospace;
+			font-size: 10pt;			
+		  }
+    .measure-iframes-container {
+    	float: left;
+    }
+      .measure-iframes-img {
+    	float: left;
+    	padding-right: 10px;
+    }
   </style>
 </head>
 <body>
@@ -15,14 +26,14 @@ echo '
 
 $m = new RTT_Measure();
 $config = RTT_Configuration::getInstance();
-	echo '<div id="measure-iframes">';
+	echo '<div class="measure-iframes-container" id="measure-iframes">';
 foreach( $m->getSiteNames() as $site ) {
 	
 	$siteTimeouts[$site]=$m->getSiteTimeout($site);
 	$siteStatus[$site]='inprogress';
 	$url = RTT_Utilities::getBaseURL() . 'singleMeasure.php?site=' . $site;
 	echo '<iframe src="' . $url . '" style="display:none"></iframe>';	
-	echo '<div id="rtt-'.$site.'">'.$site.' <img id="statusimage-'.$site.'" src="icons/progress.gif"></div>';	
+	echo '<div class="testo measure-iframes-img" id="rtt-'.$site.'">'.$site.' <img id="statusimage-'.$site.'" src="icons/progress.gif"></div>';	
 	
 }
 echo '</div>';
@@ -91,12 +102,12 @@ $('document').ready(function(){
 echo '
 
 function printMeasure(data) {
-
-	$.each(data,function(index,value) { $("#output").append(index+" : "+value+"<br/>").show("slow"); }	);
-	$("#measure-iframes").hide("slow");
+ $("#output").attr(\'class\',\'testo\');
+ $("#output").append(JSON.stringify(data)).show("slow");
+	
 }
 </script>
-<div id="output" class="hidden"></div>
+<div id="output" class="hidden testo"></div>
 </body>
 </html>
 ';
