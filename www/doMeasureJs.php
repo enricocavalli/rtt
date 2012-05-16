@@ -39,15 +39,14 @@ foreach( $m->getSiteNames() as $site ) {
 	echo '<div class="testo measure-iframes-img" id="rtt-'.$site.'">'.$site.' <img id="statusimage-'.$site.'" src="icons/progress.gif"></div>';	
 	
 }
-echo '</div>';
-
-echo '
+echo '</div>
 <script type="text/javascript">
 window.siteTimeouts='. json_encode($siteTimeouts) .'
 window.siteStatus='. json_encode($siteStatus).'
 window.siteMeasures={}
 window.js=true;
 ';
+
 echo "
 function measureCompleted(site,rtt) {
 
@@ -100,17 +99,14 @@ $('document').ready(function(){
 	window.startTime = (new Date()).getTime();		
 	 updateStatus();
 });
-";
-
-echo '
 
 function printMeasure(data) {
- $("#output").attr(\'class\',\'hidden testo measure-iframes-img\');
- $("#output").append(JSON.stringify(data)).show("slow");
+ $(\"#output\").attr('class','hidden testo measure-iframes-img');
+ $(\"#output\").append(JSON.stringify(data)).show(\"slow\");
 	
 }
 </script>
 
 </body>
 </html>
-';
+";
