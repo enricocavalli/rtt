@@ -29,6 +29,7 @@ $m = new RTT_Measure();
 $config = RTT_Configuration::getInstance();
 	echo '<div class="measure-iframes-container" id="measure-iframes">';
 	echo '<div class="measure-iframes-img testo">Connection Information: IP <b>'.$_SERVER[REMOTE_ADDR].'</b></div>';
+	echo '<div id="output" class="hidden"></div>';
 foreach( $m->getSiteNames() as $site ) {
 	
 	$siteTimeouts[$site]=$m->getSiteTimeout($site);
@@ -104,12 +105,12 @@ $('document').ready(function(){
 echo '
 
 function printMeasure(data) {
- $("#output").attr(\'class\',\'testo\');
+ $("#output").attr(\'class\',\'hidden testo measure-iframes-img\');
  $("#output").append(JSON.stringify(data)).show("slow");
 	
 }
 </script>
-<div id="output" class="hidden testo"></div>
+
 </body>
 </html>
 ';
