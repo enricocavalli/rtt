@@ -1,36 +1,38 @@
 <?php
-
+/*
+ * this class and utilities is copied from simpleSAMLphp
+*/
 class RTT_Utilities {
 
-/* This function redirects the user to the specified address.
- * An optional set of query parameters can be appended by passing
-* them in an array.
-*
-* This function will use the HTTP 303 See Other redirect if the
-* current request is a POST request and the HTTP version is HTTP/1.1.
-* Otherwise a HTTP 302 Found redirect will be used.
-*
-* The fuction will also generate a simple web page with a clickable
-* link to the target page.
-*
-* Parameters:
-*  $url         URL we should redirect to. This URL may include
-*               query parameters. If this URL is a relative URL
-*               (starting with '/'), then it will be turned into an
-*               absolute URL by prefixing it with the absolute URL
-*               to the root of the website.
-*  $parameters  Array with extra query string parameters which should
-*               be appended to the URL. The name of the parameter is
-*               the array index. The value of the parameter is the
-*               value stored in the index. Both the name and the value
-*               will be urlencoded. If the value is NULL, then the
-*               parameter will be encoded as just the name, without a
-*               value.
-*
-* Returns:
-*  This function never returns.
-*/
-public static function redirect($url, $parameters = array()) {
+	/* This function redirects the user to the specified address.
+	 * An optional set of query parameters can be appended by passing
+	* them in an array.
+	*
+	* This function will use the HTTP 303 See Other redirect if the
+	* current request is a POST request and the HTTP version is HTTP/1.1.
+	* Otherwise a HTTP 302 Found redirect will be used.
+	*
+	* The fuction will also generate a simple web page with a clickable
+	* link to the target page.
+	*
+	* Parameters:
+	*  $url         URL we should redirect to. This URL may include
+	*               query parameters. If this URL is a relative URL
+	*               (starting with '/'), then it will be turned into an
+	*               absolute URL by prefixing it with the absolute URL
+	*               to the root of the website.
+	*  $parameters  Array with extra query string parameters which should
+	*               be appended to the URL. The name of the parameter is
+	*               the array index. The value of the parameter is the
+	*               value stored in the index. Both the name and the value
+	*               will be urlencoded. If the value is NULL, then the
+	*               parameter will be encoded as just the name, without a
+	*               value.
+	*
+	* Returns:
+	*  This function never returns.
+	*/
+	public static function redirect($url, $parameters = array()) {
 	assert(is_string($url));
 	assert(strlen($url) > 0);
 	assert(is_array($parameters));

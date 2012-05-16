@@ -1,9 +1,7 @@
 <?php
 
-
-
 /**
- * Autoload function for simpleSAMLphp.
+ * Autoload function - copied for simpleSAMLphp.
  *
  * It will autoload all classes stored in the lib-directory.
  *
@@ -14,7 +12,7 @@ function RTT_autoload($className) {
 	$libDir = dirname(__FILE__) . '/';
 
 	$file = $libDir . str_replace('_', '/', $className) . '.php';
-	
+
 	if(file_exists($file)) {
 		require_once($file);
 	}
@@ -24,7 +22,7 @@ function RTT_autoload($className) {
 if(function_exists('spl_autoload_register')) {
 	/* Use the spl_autoload_register function if it is available. It should be available
 	 * for PHP versions >= 5.1.2.
-	 */
+	*/
 	spl_autoload_register('RTT_autoload');
 } else {
 

@@ -1,12 +1,11 @@
 <?php
 
 /**
- * Configuration of SimpleSAMLphp
-*
-* @author Andreas Aakre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
-* @package simpleSAMLphp
-* @version $Id$
-*/
+ * Configuration utilites - copied from SimpleSAMLphp
+ *
+ * @author Andreas Aakre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
+ * @package simpleSAMLphp
+ */
 class RTT_Configuration {
 
 	/**
