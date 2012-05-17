@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Autoload function - copied for simpleSAMLphp.
+ * Autoload function - from simpleSAMLphp.
  *
  * It will autoload all classes stored in the lib-directory.
  *
