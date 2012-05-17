@@ -82,6 +82,11 @@ class RTT_Measure {
 
 	}
 
+	public static function getMeasure() {
+		$store = new RTT_StoreMeasure();
+		return $store->getMeasure();
+	}
+	
 	/**
 	 * Get the best site from previuous measures.
 	 * If no measure is present returns random site.
