@@ -43,7 +43,7 @@ class RTT_Measure {
 	 *
 	 */
 
-	public static function getSiteNames() {
+	function getSiteNames() {
 		
 		$config=RTT_Configuration::getInstance();
 		return array_keys($config->getArray('sites'));
