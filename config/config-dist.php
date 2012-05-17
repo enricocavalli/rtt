@@ -6,7 +6,7 @@ $config = array(
 		'cookie.domain' => '.mirror.garr.it',
 		'cookie.name' => 'RTTmirror',
 		'cookie.lifetime' => 3600,
-		
+
 		'sites' => array (
 				'mi' => array(
 						'probeurl' => 'http://rttmi.mirror.garr.it/rtt/',
