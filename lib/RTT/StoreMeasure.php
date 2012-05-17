@@ -7,20 +7,21 @@
 class RTT_StoreMeasure {
 
 	private $base_cookie_name;
+	private $site_names=array();
 	private $measure=array();
 
 	public function __construct() {
 		$config=RTT_Configuration::getInstance();
 		$this->base_cookie_name=$config->getString('cookie.name','RTTmirror');
+		$this->site_names = array_keys($config->getArray('sites'));
 		$this->measure = self::getPreviousMeasure();
 	}
 
 	private function getPreviousMeasure() {
 
 		$ret=array(); 
-		$site_names=RTT_Measure::getSiteNames();
 		
-		foreach ($site_names as $s) {
+		foreach ($this->site_names as $s) {
 			if(array_key_exists($this->base_cookie_name.'-'.$s, $_COOKIE)) {
 				$ret[$s]=$_COOKIE[$this->base_cookie_name.'-'.$s];
 			}
