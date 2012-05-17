@@ -27,6 +27,11 @@ class RTT_StoreMeasure {
 	function getMeasure() {
 		return json_encode($this->measure);
 	}
+	
+	function getMeasureAsArray() {
+		
+		return json_decode($this->measure,TRUE);
+	}
 
 	function addMeasure($site,$rtt) {
 

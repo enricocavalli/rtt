@@ -87,7 +87,7 @@ class RTT_Measure {
 	function getSite() {
 		$store = new RTT_StoreMeasure();
 
-		$measures=$store->getMeasure();
+		$measures=$store->getMeasureAsArray();
 
 		if (count($measures)>0) {
 			$min_value=min($measures);
@@ -98,7 +98,7 @@ class RTT_Measure {
 		}
 
 		if(!isset($min_key)) {
-				
+
 			$sites = self::getSiteNames();
 			$index = array_rand($sites);
 			$min_key=$sites[$index];
