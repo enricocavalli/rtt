@@ -24,22 +24,36 @@ class RTT_StoreMeasure {
 		return $ret;
 
 	}
+
+	/**
+	 * get a Measure and returns it as JSON
+	 *
+	 * @return string JSON data representing measures
+	 */
+
 	function getMeasure() {
 		return json_encode($this->measure);
 	}
-	
+
+	/**
+	 * returns the array with measures - associative array site => measure
+	 *
+	 * @return array
+	 */
+
 	function getMeasureAsArray() {
-		
+
 		return $this->measure;
 	}
-
+	
 	function addMeasure($site,$rtt) {
 
 		$this->measure[$site]=$rtt;
+		$this->storeMeasure();
 
 	}
 
-	function storeMeasure() {
+	private function storeMeasure() {
 		$cookie_params = RTT_Utilities::getCookieParams();
 		setcookie($this->cookie_name,json_encode($this->measure),time() + $cookie_params['lifetime'],
 				$cookie_params['path'],$cookie_params['domain'],$cookie_params['secure'],$cookie_params['httponly']);
