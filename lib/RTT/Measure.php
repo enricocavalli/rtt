@@ -70,9 +70,13 @@ class RTT_Measure {
 	 */
 	function recordMeasure($site,$rtt) {
 
-		$store= new RTT_StoreMeasure();
-		$store->addMeasure($site, $rtt);
-		$store->storeMeasure();
+		if (array_key_exists($site, $this->probe_sites) && preg_match('/[0-9]+/', $rtt)) {
+			$store= new RTT_StoreMeasure();
+			$store->addMeasure($site, $rtt);
+			$store->storeMeasure();
+		} else {
+			throw new RTT_Exception('Site or rtt have incorrect format');
+		}
 
 
 	}

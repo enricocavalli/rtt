@@ -1,28 +1,33 @@
 <?php
 require_once('_include.php');
 
-if (!array_key_exists('site', $_REQUEST)) {
-	throw  new Exception('Site obbligatorio');
-}
+try {
 
-$site=$_REQUEST['site'];
-$m= new RTT_Measure();
+	if (!array_key_exists('site', $_REQUEST)) {
+		throw  new RTT_Exception('Site obbligatorio');
+	}
 
-if (array_key_exists('rtt', $_REQUEST)) {
-	$rtt = $_REQUEST['rtt'];
-	$m->recordMeasure($site, $rtt);
-	echo '
-<!DOCTYPE html>
-<html>
-<script>
-if(window.parent.js==true) {
-window.parent.measureCompleted("'. $site .'","'. $rtt .'");
-}
-</script>
-</html>
-';
-} else {
+	$site=$_REQUEST['site'];
+	$m= new RTT_Measure();
 
-	$m->probeSingleSite($site);
+	if (array_key_exists('rtt', $_REQUEST)) {
+		$rtt = $_REQUEST['rtt'];
+		$m->recordMeasure($site, $rtt);
+		echo '
+		<!DOCTYPE html>
+		<html>
+		<script>
+		if(window.parent.js==true) {
+		window.parent.measureCompleted("'. $site .'","'. $rtt .'");
+	}
+	</script>
+	</html>
+	';
+	} else {
 
+		$m->probeSingleSite($site);
+
+	}
+} catch (RTT_Exception $e) {
+	print $e->getMessage();
 }
