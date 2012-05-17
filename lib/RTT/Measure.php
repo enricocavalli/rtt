@@ -43,8 +43,10 @@ class RTT_Measure {
 	 *
 	 */
 
-	public function getSiteNames() {
-		return array_keys($this->probe_sites);
+	public static function getSiteNames() {
+		
+		$config=RTT_Configuration::getInstance();
+		return array_keys($config->getArray('sites'));
 	}
 
 	/**
@@ -81,13 +83,13 @@ class RTT_Measure {
 	}
 
 	/**
-	 * Get measures site from cookies
-	 * If no measure is present returns random site
+	 * Get the best site from previuous measures.
+	 * If no measure is present returns random site.
 	 *
 	 * @return string site
 	 */
 
-	function getSite() {
+	public static function getSite() {
 		$store = new RTT_StoreMeasure();
 
 		$measures=$store->getMeasureAsArray();

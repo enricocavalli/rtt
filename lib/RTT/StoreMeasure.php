@@ -6,21 +6,26 @@
 
 class RTT_StoreMeasure {
 
-	private $cookie_name;
+	private $base_cookie_name;
 	private $measure=array();
 
 	public function __construct() {
 		$config=RTT_Configuration::getInstance();
-		$this->cookie_name=$config->getString('cookie.name','RTTmirror');
+		$this->base_cookie_name=$config->getString('cookie.name','RTTmirror');
 		$this->measure = self::getPreviousMeasure();
 	}
 
 	private function getPreviousMeasure() {
 
 		$ret=array();
-		if (array_key_exists($this->cookie_name,$_COOKIE)) {
-			$ret=json_decode($_COOKIE[$this->cookie_name],TRUE);
+		$site_names=RTT_Measure::getSiteNames();
+		
+		foreach ($site_names as $s) {
+			if(array_key_exists($this->base_cookie_name.'-'.$s, $_COOKIE)) {
+				$ret[$s]=$_COOKIE[$this->base_cookie_name.'-'.$s];
+			}
 		}
+
 		return $ret;
 
 	}
@@ -55,8 +60,11 @@ class RTT_StoreMeasure {
 
 	private function storeMeasure() {
 		$cookie_params = RTT_Utilities::getCookieParams();
-		setcookie($this->cookie_name,json_encode($this->measure),time() + $cookie_params['lifetime'],
+		
+		foreach ($this->measure as $k => $v) {
+		setcookie($this->base_cookie_name.'-'.$k,$v,time() + $cookie_params['lifetime'],
 				$cookie_params['path'],$cookie_params['domain'],$cookie_params['secure'],$cookie_params['httponly']);
+		}
 	}
 
 }

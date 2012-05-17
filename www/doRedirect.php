@@ -7,9 +7,6 @@
 
 require_once('_include.php');
 
-$m = new RTT_Measure();
-
-$site=$m->getSite();
-
+$site=RTT_Measure::getSite();
 // TODO - do whatever with site
 print_r($site);
