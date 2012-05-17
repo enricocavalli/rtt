@@ -17,7 +17,7 @@ class RTT_StoreMeasure {
 
 	private function getPreviousMeasure() {
 
-		$ret=array();
+		$ret=array(); 
 		$site_names=RTT_Measure::getSiteNames();
 		
 		foreach ($site_names as $s) {

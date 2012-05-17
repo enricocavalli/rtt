@@ -43,7 +43,7 @@ class RTT_Measure {
 	 *
 	 */
 
-	function getSiteNames() {
+	public static function getSiteNames() {
 		
 		$config=RTT_Configuration::getInstance();
 		return array_keys($config->getArray('sites'));
@@ -95,6 +95,8 @@ class RTT_Measure {
 	 */
 
 	public static function getSite() {
+		
+		$sites = self::getSiteNames();
 		$store = new RTT_StoreMeasure();
 
 		$measures=$store->getMeasureAsArray();
@@ -108,8 +110,6 @@ class RTT_Measure {
 		}
 
 		if(!isset($min_key)) {
-
-			$sites = self::getSiteNames();
 			$index = array_rand($sites);
 			$min_key=$sites[$index];
 		}
