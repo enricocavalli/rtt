@@ -26,7 +26,7 @@ try {
 	';
 		} else {
 			echo "<!DOCTYPE html><html><script>
-			var matches = window.location.search.match(/\?site=(.*)&/);
+			var matches = window.location.search.match(/\?site=([^&]*)&/);
 			var site=matches[1];
 			var newurl = window.location.protocol+'//'+window.location.host+window.location.pathname+'?site='+site;
 			window.location.href=newurl;
