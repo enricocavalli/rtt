@@ -34,11 +34,20 @@ foreach( $m->getSiteNames() as $site ) {
 
 	$siteTimeouts[$site]=$m->getSiteTimeout($site);
 	$siteStatus[$site]='inprogress';
-	$url = RTT_Utilities::getBaseURL() . 'singleMeasure.php?site=' . $site;
-	echo '<iframe src="' . $url . '" style="display:none"></iframe>';
 	echo '<div class="testo measure-iframes-img" id="rtt-'.$site.'">'.$site.' <img id="statusimage-'.$site.'" src="icons/progress.gif"></div>';
+	
+}
+
+foreach( $m->getSiteNames() as $site ) {
+
+	$url = RTT_Utilities::getBaseURL() . 'singleMeasure.php?site=' . $site;
+	for ($i=0;$i<3;$i++) {
+	
+	echo '<iframe src="' . $url . '" style="display:none"></iframe>';
 
 }
+}
+
 echo '</div>
 <script type="text/javascript">
 window.siteTimeouts='. json_encode($siteTimeouts) .'

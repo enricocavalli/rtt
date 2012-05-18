@@ -12,6 +12,7 @@ try {
 
 	if (array_key_exists('rtt', $_REQUEST)) {
 		$rtt = $_REQUEST['rtt'];
+		if($rtt>0) {
 		$m->recordMeasure($site, $rtt);
 		echo '
 		<!DOCTYPE html>
@@ -23,6 +24,7 @@ try {
 	</script>
 	</html>
 	';
+		}
 	} else {
 
 		$m->probeSingleSite($site);
