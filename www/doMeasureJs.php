@@ -44,7 +44,6 @@ foreach( $m->getSiteNames() as $site ) {
 	echo '<iframe id="iframe-'.$site.'"src="' . $url . '" style="display:none"></iframe>';
 
 }
-//TODO remove iframe dopo il timeout $('#iframe1').remove();
 
 echo '</div>
 <script type="text/javascript">
