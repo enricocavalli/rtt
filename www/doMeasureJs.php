@@ -41,9 +41,10 @@ foreach( $m->getSiteNames() as $site ) {
 foreach( $m->getSiteNames() as $site ) {
 
 	$url = RTT_Utilities::getBaseURL() . 'singleMeasure.php?site=' . $site;
-	echo '<iframe src="' . $url . '" style="display:none"></iframe>';
+	echo '<iframe id="iframe-'.$site.'"src="' . $url . '" style="display:none"></iframe>';
 
 }
+//TODO remove iframe dopo il timeout $('#iframe1').remove();
 
 echo '</div>
 <script type="text/javascript">
@@ -66,6 +67,7 @@ function measureFailed(site,message) {
 
 	$('#statusimage-' + site).attr('src', 'icons/exclamation.png');
 	window.siteStatus[site]='failed';
+	$('#iframe-'+site).remove();
 	
 }
 
