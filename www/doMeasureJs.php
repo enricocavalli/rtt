@@ -75,8 +75,11 @@ function updateStatus() {
 	var nFailed = 0;
 	var nProgress = 0;
 	
-	for (s in window.siteStatus) {
+	var total = 0;
 	
+	for (s in window.siteStatus) {
+		total += 1;
+		
 		switch (window.siteStatus[s]) {
 			case 'failed':
 				nFailed += 1;
@@ -92,7 +95,9 @@ function updateStatus() {
 		$('#measure-completed').show();
 		printMeasure(window.siteMeasures);
 	} else {
+		if (nFailed < total ) {
 		window.timeoutID = window.setTimeout(timeoutMeasures, 1000);
+		}
 	}
 
 }
